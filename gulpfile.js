@@ -14,12 +14,6 @@ const rename = require("gulp-rename");
 const htmlBeautify = require("gulp-html-beautify");
 
 // 処理を記述
-// gulpでは明示的に処理の終わりを記述する必要がある。下記記述方法
-function test(done) {
-  console.log("hello Gulp");
-  done();
-}
-
 // sassをコンパイルするための記述
 function compileSass() {
   return gulp
@@ -50,7 +44,6 @@ function watch() {
   gulp.watch("./src/assets/img/**/*", gulp.series(copyImage, browserReload));
   gulp.watch("./src/**/*.html", gulp.series(formatHTML, browserReload));
 }
-// この時htmlファイルは更新対象になっていないので、htmlをいくら更新してもリロードされない、あくまで上記監視対象のファイルのみ
 
 // ブラウザを立ち上げる処理
 function browserInit(done) {
@@ -102,7 +95,6 @@ function copyImage() {
 }
 
 // functionで作成した処理を実行する
-exports.test = test;
 exports.compileSass = compileSass;
 
 // watchするための記述;
